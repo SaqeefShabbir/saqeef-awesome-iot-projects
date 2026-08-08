@@ -1,0 +1,30 @@
+graph TD 
+    subgraph "Frontend" 
+        A[Angular 14+ Web App] --> B[React Native Mobile App] 
+    end 
+ 
+    subgraph "Backend (AWS)" 
+        B --> C[API Gateway] 
+        C --> D[Load Balancer] 
+        D --> E[Microservices: Spring Boot/Node.js] 
+        E --> F[(PostgreSQL RDS)] 
+        E --> G[Redis Cache] 
+        E --> H[AWS Lambda Serverless] 
+    end 
+ 
+    subgraph "Data Pipeline ^& AI" 
+        H --> I[Device Data: IoT Core/Kinesis] 
+        I --> J[(S3 Data Lake)] 
+        J --> K[ETL: Python/Pandas] 
+        K --> L[Training: TensorFlow] 
+        L --> M[SageMaker Model Serving] 
+        M --> E 
+    end 
+ 
+    subgraph "Device Layer" 
+        N[Milesight Sensors] --> I 
+    end 
+ 
+    subgraph "CI/CD" 
+        O[Jenkins/GitHub Actions] --> E & H & A 
+    end 

@@ -1,0 +1,21 @@
+graph TD 
+    subgraph "Frontend/UI" 
+        A[Web Forms: C#/ASP.NET] --> B[Desktop Search Tool: C#] 
+    end 
+ 
+    subgraph "Application Server" 
+        A --> C[Web Server: .NET Framework] 
+        B --> D[Application Logic/Services] 
+        C --> D 
+        D --> E[(SQL Database)] 
+    end 
+ 
+    subgraph "Automation" 
+        D --> F[Console App: End-of-Day] 
+        F --> G[Auto Reports Generation] 
+    end 
+ 
+    subgraph "Deployment" 
+        D --> H[Git] 
+        H --> I[Bi-Weekly Releases] 
+    end 

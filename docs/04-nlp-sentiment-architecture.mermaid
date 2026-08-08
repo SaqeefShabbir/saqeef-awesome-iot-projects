@@ -1,0 +1,15 @@
+graph TD 
+    subgraph "Input Data" 
+        A[User Input: Text/Reviews] --> B[Data Ingestion: CSV/API] 
+    end 
+ 
+    subgraph "Processing" 
+        A & B --> C[Backend: Node.js/Python] 
+        C --> D[IBM Watson NLP APIs] 
+        D --> E[(Results Database)] 
+    end 
+ 
+    subgraph "Output" 
+        E --> F[Dashboard: Angular/React] 
+        F --> G[End Users: Feedback/Analysis] 
+    end 

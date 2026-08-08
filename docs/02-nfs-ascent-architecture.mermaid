@@ -1,0 +1,18 @@
+graph TD 
+    subgraph "Client Applications" 
+        A[Angular Web App] --> B[WPF Desktop Client] 
+    end 
+ 
+    subgraph "Backend" 
+        B --> C[API Gateway/Load Balancer] 
+        A --> C 
+        C --> D[Web Server: .NET/ASP.NET MVC] 
+        D --> E[Business Logic: C#/MVVM] 
+        E --> F[(SQL Database)] 
+        E --> G[Crystal Reports] 
+    end 
+ 
+    subgraph "CI/CD" 
+        D & E & F --> H[Git Repository] 
+        H --> I[Daily Builds Pipeline] 
+    end 
