@@ -112,8 +112,64 @@ graph TD
         E --> F[Dashboard: Angular/React] 
         F --> G[End Users: Feedback/Analysis] 
     end 
-``` 
+```
+
+## 5. ComfyUI with ImaginArt with custom nodes - Open Source Project 
  
+```mermaid 
+graph TB
+    subgraph User_Interface["🎨 User Interface Layer"]
+        Browser[Web Browser<br>http://127.0.0.1:8188]
+        CLI[Command Line Interface<br>python main.py --listen --cpu]
+    end
+
+    subgraph ComfyUI_Core["⚙️ ComfyUI Core Engine"]
+        Server[ComfyUI Server<br>main.py]
+        Router[Node Router<br>execution.py]
+        Workflow[Workflow Manager<br>Queues & Execution]
+    end
+
+    subgraph Custom_Nodes["🔌 Custom Nodes Layer"]
+        Manager[ComfyUI-Manager<br>Node Management]
+        VideoHelper[VideoHelperSuite<br>Video Generation]
+        ControlNet[ComfyUI-ControlNet<br>Pose/Edge Control]
+        IPAdapter[IPAdapter_plus<br>Face/Character Consistency]
+        ImpactPack[Impact-Pack<br>Upscaling & Processing]
+    end
+
+    subgraph Models["🧠 AI Models Layer"]
+        SDXL[SDXL Base<br>Image Generation<br>~6.94 GB]
+        Refiner[SDXL Refiner<br>Image Refinement<br>~6.07 GB]
+        SVD[SVD-XT<br>Video Generation<br>~7.87 GB]
+        Canny[ControlNet Canny<br>Edge Detection<br>~2.55 GB]
+    end
+
+    subgraph Processing["⚡ Processing Layer"]
+        CPU[CPU Mode<br>Fallback]
+        Attention[Attention Module<br>comfy_kitchen]
+        VAE[VAE Decoder<br>Image/Video Decoding]
+    end
+
+    subgraph Storage["💾 Storage Layer"]
+        Input[(Input Images<br>/input/)]
+        Output[(Generated Outputs<br>/output/)]
+        ModelsFolder[(Model Weights<br>/models/)]
+        UserData[(User Settings<br>/user/)]
+    end
+
+    Browser --> Server
+    CLI --> Server
+    Server --> Router
+    Router --> Workflow
+    Workflow --> Custom_Nodes
+    Custom_Nodes --> Models
+    Models --> Processing
+    Processing --> Storage
+    Storage --> Output
+    ModelsFolder --> Models
+    Input --> Processing
+    Output --> Browser
+```
 --- 
  
 ## How to View These Diagrams 
