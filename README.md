@@ -114,6 +114,8 @@ graph TD
     end 
 ```
 
+--- 
+
 ## 5. ComfyUI with ImaginArt with custom nodes - Open Source Project 
  
 ```mermaid 
